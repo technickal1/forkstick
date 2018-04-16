@@ -109,37 +109,6 @@ Copyright 2018 - Nick Henry
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script>
       // Initialize Firebase
-      // add multiple sign-in
-      var config = {
-        apiKey: "AIzaSyDMg8O4Kwo5_AJGlpr_aYQlALhQsR6tXAI",
-        authDomain: "forkstick-n41311.firebaseapp.com",
-        databaseURL: "https://forkstick-n41311.firebaseio.com",
-        projectId: "forkstick-n41311",
-        storageBucket: "forkstick-n41311.appspot.com",
-      };
-      firebase.initializeApp(config);
-    </script>
-    
-    <!-- access real-time database -->
-    <script>
-      function getTitle() {
-        // create firebase references
-        var firebaseRef = firebase.database().ref();
-        var articlesRef = firebaseRef.child('__articles');
-        var articleTitleRef = articlesRef.child('title');
-        
-        // input text box
-        // var firebaseInput = firebase_input.value;
-        
-        // set new article json values
-        // var newArticle = articlesRef.push().set({
-        //   author: "technickal1",
-        //   title: firebaseInput,
-        // });
-        
-        // use below to test random values
-        // firebaseRef.child("newKey").set("some value");
-      }
     </script>
     
   </body>
