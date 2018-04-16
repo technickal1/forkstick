@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<!-- transparent header that draws on top of the layout's background -->
+<head>
+    <!-- housekeeping -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="forkstick: a website about whatever">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>new article</title>
+    <!-- import fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-pink.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- firebase stuff -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+      // initialize Firebase
+      var config = {
+      apiKey: "AIzaSyDMg8O4Kwo5_AJGlpr_aYQlALhQsR6tXAI",
+      authDomain: "forkstick-n41311.firebaseapp.com",
+      databaseURL: "https://forkstick-n41311.firebaseio.com",
+      projectId: "forkstick-n41311",
+      storageBucket: "forkstick-n41311.appspot.com",
+      };
+      firebase.initializeApp(config);
+    </script>
+</head>
+
+<body>
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+        <div class="mdl-textfield mdl-js-textfield">
+          <input id="newTitle" class="mdl-textfield__input" type="text" />
+          <label class="mdl-textfield__label" for="title">title...</label>
+        </div>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href=""><i class="material-icons">delete</i></a>
+        <a class="mdl-navigation__link" href="">
+          <button id="draftBtn" onclick="draftBtnClick()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+          DRAFT IT
+          </button></a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Title</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <!-- Floating Multiline Textfield -->
+    <form action="#">
+      <div style="min-width:60%;margin:auto;" class="mdl-grid mdl-textfield mdl-js-textfield">
+        <label class="mdl-layout mdl-textfield__label" for="writing_zone">click and start typing...</label>
+        <textarea id="writing_zone" class="mdl-textfield__input mdl-cell mdl-cell--12-col" type="text" rows= "50"></textarea>
+      </div>
+    </form>
+  </main>
+</div>
+<!-- for adding to real-time database -->
+    <script>
+      
+      function draftBtnClick() {
+        var titleInput = document.getElementById("newTitle").value;
+      
+        // create firebase references
+        var firebaseRef = firebase.database().ref();
+        var articlesRef = firebaseRef.child('__articles');
+        var articleTitleRef = articlesRef.child('title');
+        
+        // input text box
+        alert('newTitle');
+        
+        // get unique key for new article
+        // set new article json values
+        var newArticle = articlesRef.push().set({
+          author: "technickal1",
+          title: newTitle,
+        });
+        
+        // use below to test random values
+        // firebaseRef.child("newKey").set("some value");
+      }
+    </script>
+  </body>
+</html>

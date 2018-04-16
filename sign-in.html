@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>forkstick auth</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+      // initialize Firebase
+      var config = {
+      apiKey: "AIzaSyDMg8O4Kwo5_AJGlpr_aYQlALhQsR6tXAI",
+      authDomain: "forkstick-n41311.firebaseapp.com",
+      databaseURL: "https://forkstick-n41311.firebaseio.com",
+      projectId: "forkstick-n41311",
+      storageBucket: "forkstick-n41311.appspot.com",
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.js"></script>
+    <!-- load font(s) and CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.css" />
+    <script type="text/javascript">
+    
+      // FirebaseUI config.
+      var uiConfig = {
+        signInSuccessUrl: 'https://forkstick.com/new_article.html',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          firebase.auth.PhoneAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: '#'
+      };
+
+      // initialize the FirebaseUI widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+    
+  </head>
+  <body>
+    <!-- The surrounding HTML is left untouched by FirebaseUI. -->
+    <div>
+      <h1 style="font-family: 'nunito',sans-serif;">forkstick</h1>
+    </div>
+    
+    <div id="firebaseui-auth-container"></div>
+  </body>
+</html>
